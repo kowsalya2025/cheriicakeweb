@@ -1,0 +1,219 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+       <style>
+      .blog-container {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 40px auto;
+            background-color: #f7f0e9;
+            padding: 40px;
+        }
+
+        .blog-title {
+            color: #d2691e;
+            font-size: 42px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero-section {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            align-items: flex-start;
+        }
+
+        .hero-image {
+            flex: 0 0 400px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            /* height: 320px; */
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-content {
+            flex: 1;
+
+        }
+
+        .hero-subtitle {
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero-text {
+            color: #212121;
+            font-size: 22px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        </style>
+
+           <div class="blog-container">
+        <h1 class="blog-title">ABOUT US</h1>
+
+         <div class="hero-section">
+            
+            <div class="hero-content">
+                <h3 class="hero-text text-center mb-4">Baking From the Heart Since 2012
+                    At Chreii Bakery, every loaf, pastry, and cake tells a story. What
+                        started as a small kitchen passion has blossomed into a community
+                        favorite. We believe in using time-honored recipes, fresh local
+                        ingredients, and a generous sprinkle of love in every bite.</h3>
+
+                        <h3 class="hero-text text-center mb-4">Our mission is to bring joy through handcrafted baked goods made
+daily with care and dedication. Whether it's your morning bread or a
+special occasion cake, we treat each creation as if it's for family.</h3>
+
+                        <h3 class="hero-text text-center">We're proud to serve our neighborhood, support local farmers, and
+bake a little happiness into every day.</h3>
+            </div>
+
+            <div class="hero-image">
+                <img src="/static/main/images/about1.png" alt="Fresh artisan bread" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRDI2OTFFII8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZyZXNoIEJyZWFkPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
+        </div>
+        
+        <div class="hero-section">
+            <div class="hero-image">
+                <img src="/static/main/images/about2.png" alt="Fresh artisan bread" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRDI2OTFFII8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZyZXNoIEJyZWFkPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
+            <div class="hero-content">
+                 <h1 class="blog-title">OUR STORY</h1>
+               
+                <h3 class="hero-text text-center">Cherii Bakery began as a home kitchen dream and
+quickly became a beloved neighborhood treasure.
+Founded on the values of quality, community, and
+homemade charm, we bake everything fresh each day
+using family recipes and locally sourced ingredients.</h3>
+            </div>
+        </div>
+
+
+
+   
+
+<section class="py-5" style="background-color: #fef9f5;">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5" style="color: #d49260;">Why Choose Us</h2>
+    <div class="row g-1">
+
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-4 col-xl-2 mx-auto">
+        <div class="card text-center h-100 shadow-sm border-0" style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="rounded-circle d-inline-flex justify-content-center align-items-center mb-3"
+                 style="background-color: #d49260; width: 60px; height: 60px;">
+              <i class="bi bi-cake2 fs-3 text-light"></i>
+            </div>
+            <h4 class="fw-bold" style="color: #d49260;">Fresh, Handcrafted Daily</h4>
+            <h5 class="mb-0">Every morning, our bakers start early to bring you the freshest breads, pastries, and cakes — made from scratch using real, wholesome ingredients.</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-4 col-xl-2 mx-auto">
+        <div class="card text-center h-100 shadow-sm border-0" style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="rounded-circle d-inline-flex justify-content-center align-items-center mb-3"
+                 style="background-color: #d49260; width: 60px; height: 60px;">
+              <i class="bi bi-flower1 fs-3 text-light"></i>
+            </div>
+            <h4 class="fw-bold" style="color: #d49260;">Locally <br> Sourced Ingredients</h4>
+            <h5 class="mb-0">We partner with local farms and suppliers to ensure the highest quality and support our community.</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-6 col-lg-4 col-xl-2 mx-auto">
+        <div class="card text-center h-100 shadow-sm border-0" style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="rounded-circle d-inline-flex justify-content-center align-items-center mb-3"
+                 style="background-color: #d49260; width: 60px; height: 60px;">
+              <i class="bi bi-stars fs-3 text-light"></i>
+            </div>
+            <h4 class="fw-bold" style="color: #d49260;">Unique & Custom Creations</h4>
+            <h5 class="mb-0">From croissants to custom cakes, we bake with creativity and care—tailored to your tastes and occasions.</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-6 col-lg-4 col-xl-2 mx-auto">
+        <div class="card text-center h-100 shadow-sm border-0" style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="rounded-circle d-inline-flex justify-content-center align-items-center mb-3"
+                 style="background-color: #d49260; width: 60px; height: 60px;">
+              <i class="bi bi-flower1 fs-3 text-light"></i>
+            </div>
+            <h4 class="fw-bold" style="color: #d49260;">Warm, Welcoming Atmosphere</h4>
+            <h5 class="mb-0">We’re more than just a bakery—we’re your neighborhood spot for sweet treats, coffee, and friendly smiles.</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-md-6 col-lg-4 col-xl-2 mx-auto">
+        <div class="card text-center h-100 shadow-sm border-0" style="border-radius: 15px;">
+          <div class="card-body">
+            <div class="rounded-circle d-inline-flex justify-content-center align-items-center mb-3"
+                 style="background-color: #d49260; width: 60px; height: 60px;">
+              <i class="bi bi-award fs-3 text-light"></i>
+            </div>
+            <h4 class="fw-bold" style="color: #d49260;">Passion  <br> for  <br> Excellence</h4>
+            <h5 class="mb-0">Baking is our passion, and it shows in every detail—from the golden crust to the last crumb.</h5>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section style="background-color: #e7b490;">
+     <h1 class="blog-title p-1">MEET THE BAKERY</h1>
+
+<div class="text-center m-3 fs-3">Our team is made up of passionate bakers who bring skill, creativity, and care to every product. From our Head Baker to our
+pastry chefs, everyone shares a commitment to quality and customer happiness.</div>
+</section>
+
+        <h1 class="blog-title">COME VISIT US</h1>
+
+         <div class="hero-section">
+            
+            <div class="hero-content">
+                <h3 class="hero-text text-center mb-4">We're severing smiles across Tamil Nadu with many<br>
+franchise location!</h3>
+
+                        <h3 class="hero-text text-center mb-4">Drop by your nearest branch and enjoy our fresh,<br>
+handcrafted treats.</h3>
+<h4 class="blog-title text-center">Head Office</h4>
+
+                        <h3 class="hero-text text-center">Cherii bakery,<br>
+No.45, Anna Salai, T.Nager,<br>Chennai-600 007 <br>Tamilnadu. India.</h3>
+            </div>
+
+            <div class="hero-image">
+                <img src="/static/main/images/about3.png" alt="Fresh artisan bread" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRDI2OTFFII8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkZyZXNoIEJyZWFkPC90ZXh0Pjwvc3ZnPg=='">
+            </div>
+        </div>
+
+        </div>
+
+        {% endblock %}

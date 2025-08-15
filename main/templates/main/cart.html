@@ -1,0 +1,193 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}My Cart{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4">My Cart</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id="cartItems"></tbody>
+    </table>
+    <div class="text-end">
+        <h4 id="cartTotal">Total: ₹0</h4>
+        <button class="btn btn-success" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartItems = document.getElementById("cartItems");
+    let cartTotal = document.getElementById("cartTotal");
+    let checkoutBtn = document.getElementById("checkoutBtn");
+
+    function renderCart() {
+        cartItems.innerHTML = "";
+        let total = 0;
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = `<tr><td colspan="6" class="text-center">Your cart is empty</td></tr>`;
+            cartTotal.textContent = "Total: ₹0.00";
+            updateCartCount();
+            return;
+        }
+
+        cart.forEach((item, index) => {
+            let price = parseFloat(item.price) || 0;
+            let qty = parseInt(item.quantity) || 0;
+            let subtotal = price * qty;
+
+            let row = `
+                <tr>
+                    <td><img src="${item.image}" width="100"></td>
+                    <td>${item.name}</td>
+                    <td>₹${price.toFixed(2)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-secondary" onclick="updateQty(${index}, -1)">-</button>
+                        ${qty}
+                        <button class="btn btn-sm btn-secondary" onclick="updateQty(${index}, 1)">+</button>
+                    </td>
+                    <td>₹${subtotal.toFixed(2)}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="removeItem(${index})">X</button></td>
+                </tr>
+            `;
+            cartItems.innerHTML += row;
+            total += subtotal;
+        });
+
+        cartTotal.textContent = `Total: ₹${total.toFixed(2)}`;
+        updateCartCount();
+    }
+
+    window.updateQty = function (index, change) {
+        cart[index].quantity += change;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+    };
+
+    window.removeItem = function (index) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+    };
+
+    function updateCartCount() {
+        let count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        document.getElementById("cartCount").textContent = count;
+    }
+
+    // ✅ Proceed to checkout click event
+    checkoutBtn.addEventListener("click", function () {
+        if (cart.length === 0) {
+            alert("Your cart is empty!");
+            return;
+        }
+
+        // Clear cart after "payment"
+        localStorage.removeItem("cart");
+        renderCart();
+
+        // Show success message
+        alert("✅ Payment Successful! Thank you for your purchase.");
+    });
+
+    renderCart();
+});
+</script>
+
+<script>
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById('cartCount').textContent = totalItems;
+}
+</script>
+{% endblock %}
+
+
+<!-- 
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartItems = document.getElementById("cartItems");
+    let cartTotal = document.getElementById("cartTotal");
+
+    function renderCart() {
+        cartItems.innerHTML = "";
+        let total = 0;
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = `<tr><td colspan="6" class="text-center">Your cart is empty</td></tr>`;
+            cartTotal.textContent = "Total: ₹0.00";
+            updateCartCount();
+            return;
+        }
+
+        cart.forEach((item, index) => {
+            let price = parseFloat(item.price) || 0;
+            let qty = parseInt(item.quantity) || 0;
+            let subtotal = price * qty;
+
+            let row = `
+                <tr>
+                    <td><img src="${item.image}" width="100"></td>
+                    <td>${item.name}</td>
+                    <td>₹${price.toFixed(2)}</td>
+                    <td>
+                        <button class="btn btn-sm btn-secondary" onclick="updateQty(${index}, -1)">-</button>
+                        ${qty}
+                        <button class="btn btn-sm btn-secondary" onclick="updateQty(${index}, 1)">+</button>
+                    </td>
+                    <td>₹${subtotal.toFixed(2)}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="removeItem(${index})">X</button></td>
+                </tr>
+            `;
+            cartItems.innerHTML += row;
+            total += subtotal;
+        });
+
+        cartTotal.textContent = `Total: ₹${total.toFixed(2)}`;
+        updateCartCount();
+    }
+
+    window.updateQty = function (index, change) {
+        cart[index].quantity += change;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+    };
+
+    window.removeItem = function (index) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+    };
+
+    function updateCartCount() {
+        let count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        document.getElementById("cartCount").textContent = count;
+    }
+
+    renderCart();
+});
+</script>  -->
+
+
+

@@ -1,0 +1,446 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .info-box {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .icon-text {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .icon-text i {
+      font-size: 24px;
+      margin-right: 10px;
+      color: #d69f38;
+    }
+    .note {
+      font-size: 0.9rem;
+      margin-top: 10px;
+      color: #555;
+    }
+
+  .cake-card {
+    transition: transform 0.3s ease; /* Smooth scaling */
+    border-radius: 15px;
+  
+}
+
+.cake-card img {
+    height: 350px;
+    object-fit: cover;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cake-card:hover {
+    transform: scale(1.03);
+}
+
+        .wishlist-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .card-body{
+            background-color: rgb(235, 179, 97);
+        }
+
+
+   
+    #productDetail {
+        font-size: 24px; /* change as needed */
+    }
+
+
+  </style>
+<div class="container py-5" id="productDetail"></div>
+
+<body class="bg-light">
+
+
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="checkoutModalLabel">Checkout Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="checkoutForm">
+          <div class="mb-3">
+            <label for="customerName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="customerName" required>
+          </div>
+          <div class="mb-3">
+            <label for="contactNumber" class="form-label">Contact Number</label>
+            <input type="tel" class="form-control" id="contactNumber" pattern="[0-9]{10}" required>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea class="form-control" id="address" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="pincode" class="form-label">Pincode</label>
+            <input type="text" class="form-control" id="pincode" pattern="[0-9]{6}" required>
+          </div>
+          <button type="submit" class="btn btn-success w-100">Proceed to Checkout</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container py-5">
+  <div class="row">
+    <!-- Left column -->
+    <div class="col-md-6">
+      <label for="pincode" class="form-label fw-bold">ENTER YOUR PINCODE*</label>
+      <input type="text" id="pincode" class="form-control mb-3 fs-2">
+
+      <div class="icon-text fs-3 my-5"><i class="bi bi-shield-lock fs-3"></i>100% secure payment</div>
+      <div class="icon-text fs-3 my-5"><i class="bi bi-clock-history fs-3"></i>24 hour preparation time</div>
+      <div class="icon-text fs-3 my-5"><i class="bi bi-shield-lock fs-3"></i>100% vegetarian</div>
+
+      <div class="note fs-5">** Note that all orders will be dispatched after 24 hours **</div>
+    </div>
+
+    <!-- Right column -->
+    <div class="col-md-6">
+      <div class="info-box">
+        <h5 class="fw-bold">Nutrition:</h5>
+        <h5>Serving Size (100g) (Amount per serving Calories 323 Kcal, Fat 11g, Saturated Fat 7g, Trans Fat 0g, Cholesterol 11mg, Sodium 278mg, Carbohydrate 51g, Sugar 26g, Protein 5g) “An average active adult requires 2,000 kcal energy per day, however, calorie need may vary”</h5>
+      </div>
+
+      <div class="info-box">
+        <h5 class="fw-bold">Ingredients:</h5>
+        <h5>Chocolate Sponge, Sugar Syrup, Chocolate Cream, Chocolate Truffle</h5>
+      </div>
+
+      <div class="info-box">
+        <h5 class="fw-bold">Allergies:</h5>
+        <h5>Allergy Advice: Contains: Milk. Made in factory that also handles Nuts, Gluten, Soy, Mustard, Sesame, Peanuts, Eggs, Nuts.</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <div class="container py-5">
+     <h2 class="mb-4 text-center">You May Also Like</h2>
+        <div class="row g-4">
+       {% comment %} Rasa Gulla {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/rasagulla.jpg' %}" 
+                     class="card-img-top product-link" 
+                     alt="Rasa Gulla"
+                     data-name="Rasa Gulla"
+                     data-price="650"
+                     data-description="Soft and spongy Rasa Gulla, soaked in syrup."
+                     data-image="{% static 'main/images/rasagulla.jpg' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Rasa Gulla" data-price="650"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Rasa Gulla</h2>
+                    <h5 class="card-text">From: ₹650 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+
+   {% comment %} Cheese Cake{% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/cakepink.jpg' %}" 
+                     class="card-img-top product-link" 
+                     alt="Cheese Cake"
+                     data-name="Cheese Cake"
+                     data-price="950"
+                     data-description="This delectable treat is a heavenly
+combination of rich, velvety chocolate
+and a melt-in-your-mouth texture,
+Whether you're a chocolate lover or
+looking to satisfy your sweet tooth,
+Choco Delight Cake is the perfect
+choice."
+                     data-image="{% static 'main/images/cakepink.jpg' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Cheese Cake" data-price="950"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Cheese Cake</h2>
+                    <h5 class="card-text">From: ₹950 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+ {% comment %} Coffee Cake {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/cakecoffe.png' %}" 
+                     class="card-img-top product-link" 
+                     alt="Coffee Cake "
+                     data-name="Coffee Cake "
+                     data-price="600"
+                     data-description="This delectable treat is a heavenly
+combination of rich, velvety chocolate
+and a melt-in-your-mouth texture,
+Whether you're a chocolate lover or
+looking to satisfy your sweet tooth,
+Choco Delight Cake is the perfect
+choice."
+                     data-image="{% static 'main/images/cakecoffe.png' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Coffee Cake " data-price="600"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Coffee Cake </h2>
+                    <h5 class="card-text">From: ₹600 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+
+ </div>
+ </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || 'Sample Product';
+    const pricePerKg = parseFloat(params.get('price')) || 650;
+    const image = params.get('image') || '/static/main/images/rasagulla.jpg';
+    const description = params.get('description') ;
+
+
+    const container = document.getElementById('productDetail');
+    container.innerHTML = `
+        <div class="row">
+            <div class="col-md-6">
+                <img src="${decodeURIComponent(image)}" class="img-fluid" alt="${decodeURIComponent(name)}">
+            </div>
+            <div class="col-md-6">
+                <h2>${decodeURIComponent(name)}</h2>
+                <p id="productDescription">${decodeURIComponent(description)}</p>
+
+                <div class="mb-3">
+                    <label for="weightSelect" class="form-label">Select Weight:</label>
+                    <select id="weightSelect" class="form-select w-auto">
+                        <option value="0.5">0.5 kg</option>
+                        <option value="1" selected>1 kg</option>
+                        <option value="2">2 kg</option>
+                        <option value="3">3 kg</option>
+                        <option value="4">4 kg</option>
+                        <option value="5">5 kg</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 d-flex align-items-center">
+                    <button id="minusBtn" class="btn btn-secondary me-2">-</button>
+                    <input type="number" id="quantity" value="1" min="1" class="form-control w-25 text-center">
+                    <button id="plusBtn" class="btn btn-secondary ms-2">+</button>
+                </div>
+
+                <h4>₹<span id="totalPrice">${pricePerKg}</span></h4>
+
+                <button id="addToCartBtn" class="btn btn-warning me-2">Add to Cart</button>
+                <button id="buyNowBtn" class="btn btn-success me-2">Buy Now</button>
+                <button id="deleteBtn" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    `;
+
+    const weightSelect = document.getElementById('weightSelect');
+    const quantityInput = document.getElementById('quantity');
+    const totalPriceEl = document.getElementById('totalPrice');
+
+    function updateTotalPrice() {
+        const weight = parseFloat(weightSelect.value);
+        const quantity = parseInt(quantityInput.value);
+        const total = (pricePerKg * weight * quantity).toFixed(2);
+        totalPriceEl.textContent = total;
+    }
+
+    weightSelect.addEventListener('change', updateTotalPrice);
+    quantityInput.addEventListener('input', updateTotalPrice);
+
+    document.getElementById('plusBtn').addEventListener('click', () => {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+        updateTotalPrice();
+    });
+
+    document.getElementById('minusBtn').addEventListener('click', () => {
+        if (parseInt(quantityInput.value) > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+            updateTotalPrice();
+        }
+    });
+
+   
+
+// Add this after your container.innerHTML part
+document.getElementById('addToCartBtn').addEventListener('click', function () {
+    const weight = parseFloat(document.getElementById('weightSelect').value);
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const price = parseFloat(pricePerKg) * weight; // total price for selected weight
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const product = {
+        name: decodeURIComponent(name),
+        price: price, // per product (for selected weight)
+        image: decodeURIComponent(image),
+        quantity: quantity
+    };
+
+    // If product already exists in cart → update quantity
+    let existingIndex = cart.findIndex(item => item.name === product.name && item.price === product.price);
+    if (existingIndex !== -1) {
+        cart[existingIndex].quantity += quantity;
+    } else {
+        cart.push(product);
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert("Item added to cart!");
+});
+
+function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+    const cartCountElement = document.getElementById("cartCount");
+    if (cartCountElement) {
+        cartCountElement.textContent = count;
+    }
+}
+
+
+
+    // document.getElementById('addToCartBtn').addEventListener('click', () => {
+    //     alert(`${quantityInput.value} x ${weightSelect.value}kg ${name} added to cart!`);
+    //     // Add your cart logic here
+    // });
+
+
+    // Show checkout modal when Buy Now is clicked
+document.getElementById('buyNowBtn').addEventListener('click', () => {
+    const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+    checkoutModal.show();
+});
+
+// Handle checkout form submission
+document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const customerName = document.getElementById('customerName').value.trim();
+    const contact = document.getElementById('contactNumber').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const pincode = document.getElementById('pincode').value.trim();
+
+    if (!customerName || !contact || !address || !pincode) {
+        alert("Please fill out all fields.");
+        return;
+    }
+
+    if (!/^[0-9]{10}$/.test(contact)) {
+        alert("Please enter a valid 10-digit contact number.");
+        return;
+    }
+
+    if (!/^[0-9]{6}$/.test(pincode)) {
+        alert("Please enter a valid 6-digit pincode.");
+        return;
+    }
+
+    alert(`Thank you ${customerName}! Proceeding to checkout for delivery to ${address}, Pincode: ${pincode}`);
+    // Here you can redirect or send form data to backend
+});
+
+
+    // document.getElementById('buyNowBtn').addEventListener('click', () => {
+
+    //     alert(`Proceeding to buy ${quantityInput.value} x ${weightSelect.value}kg ${name} for ₹${totalPriceEl.textContent}`);
+
+    // });
+
+   
+
+    document.getElementById('deleteBtn').addEventListener('click', () => {
+        if(confirm("Are you sure you want to remove this product?")) {
+            container.innerHTML = '<p>Product removed.</p>';
+        }
+    });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+// ----- Wishlist Functionality -----
+document.querySelectorAll('.wishlist-icon').forEach(icon => {
+    icon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent triggering card click
+        this.classList.toggle('active');
+
+        const name = this.dataset.name;
+        const price = this.dataset.price;
+        const image = this.parentElement.querySelector('img').src;
+
+        if (this.classList.contains('active')) {
+            this.classList.replace('bi-heart', 'bi-heart-fill');
+            addToWishlist(name, price, image);
+        } else {
+            this.classList.replace('bi-heart-fill', 'bi-heart');
+            removeFromWishlist(name);
+        }
+    });
+});
+
+function addToWishlist(name, price, image) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    if (!wishlist.find(item => item.name === name)) {
+        wishlist.push({ name, price, image });
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    }
+}
+
+function removeFromWishlist(name) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlist = wishlist.filter(item => item.name !== name);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+// ----- Product Detail Navigation -----
+document.querySelectorAll('.product-link').forEach(img => {
+    img.addEventListener('click', function() {
+        const name = encodeURIComponent(this.dataset.name);
+        const price = encodeURIComponent(this.dataset.price);
+        const image = encodeURIComponent(this.dataset.image);
+        const description = encodeURIComponent(this.dataset.description);
+
+        window.location.href = `/product_detail?name=${name}&price=${price}&image=${image}&description=${description}`;
+    });
+});
+</script>
+
+{% endblock %}
+
+
+
+
+
+

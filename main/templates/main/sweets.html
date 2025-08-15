@@ -1,0 +1,275 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Sweets{% endblock %}
+
+{% block content %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
+
+<style>
+    .cake-card {
+        transition: transform 0.3s ease;
+        border-radius: 15px;
+    }
+
+    .cake-card img {
+        height: 350px;
+        object-fit: cover;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .cake-card:hover {
+        transform: scale(1.03);
+    }
+
+    .wishlist-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        border-radius: 50%;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .card-body {
+        background-color: rgb(235, 179, 97);
+    }
+</style>
+
+<body>
+
+<div class="container py-5">
+    <h2 class="mb-4 text-center">Our Delicious Sweets</h2>
+    <div class="row g-4">
+
+        <!-- Product Cards -->
+        {% comment %} Kaju Katli {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/kaju.jpg' %}" 
+                     class="card-img-top product-link" 
+                     alt="Kaju Katli"
+                     data-name="Kaju Katli"
+                     data-price="700"
+                     data-description="Delicious Kaju Katli, rich and melt-in-your-mouth sweet."
+                     data-image="{% static 'main/images/kaju.jpg' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Kaju Katli" data-price="700"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Kaju Katli</h2>
+                    <h5 class="card-text">From: ₹700 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Barfi {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/barfi.jpg' %}" 
+                     class="card-img-top product-link" 
+                     alt="Barfi"
+                     data-name="Barfi"
+                     data-price="700"
+                     data-description="Delicious Barfi, creamy and rich in taste."
+                     data-image="{% static 'main/images/barfi.jpg' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Barfi" data-price="700"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Barfi</h2>
+                    <h5 class="card-text">From: ₹700 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Gulab Jamun {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/gulab.webp' %}" 
+                     class="card-img-top product-link" 
+                     alt="Gulab Jamun"
+                     data-name="Gulab Jamun"
+                     data-price="750"
+                     data-description="Soft and juicy Gulab Jamun, perfectly sweet."
+                     data-image="{% static 'main/images/gulab.webp' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Gulab Jamun" data-price="750"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Gulab Jamun</h2>
+                    <h5 class="card-text">From: ₹750 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Imarti {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/imarti.jpeg' %}" 
+                     class="card-img-top product-link" 
+                     alt="Imarti"
+                     data-name="Imarti"
+                     data-price="550"
+                     data-description="Crispy and sweet Imarti, a traditional favorite."
+                     data-image="{% static 'main/images/imarti.jpeg' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Imarti" data-price="550"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Imarti</h2>
+                    <h5 class="card-text">From: ₹550 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Rasa Gulla {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/rasagulla.jpg' %}" 
+                     class="card-img-top product-link" 
+                     alt="Rasa Gulla"
+                     data-name="Rasa Gulla"
+                     data-price="650"
+                     data-description="Soft and spongy Rasa Gulla, soaked in syrup."
+                     data-image="{% static 'main/images/rasagulla.jpg' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Rasa Gulla" data-price="650"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Rasa Gulla</h2>
+                    <h5 class="card-text">From: ₹650 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Rasmilai {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/rasami.webp' %}" 
+                     class="card-img-top product-link" 
+                     alt="Rasmilai"
+                     data-name="Rasmilai"
+                     data-price="650"
+                     data-description="Rich and creamy Rasmilai, a delightful sweet."
+                     data-image="{% static 'main/images/rasami.webp' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Rasmilai" data-price="650"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Rasmilai</h2>
+                    <h5 class="card-text">From: ₹650 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Lattu {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/lattu.jpg' %}" 
+                     class="card-img-top product-link" 
+                     alt="Lattu"
+                     data-name="Lattu"
+                     data-price="1200"
+                     data-description="Tasty Lattu sweet, traditional and rich."
+                     data-image="{% static 'main/images/lattu.jpg' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Lattu" data-price="1200"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Lattu</h2>
+                    <h5 class="card-text">From: ₹1200 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Palkova {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/palgova.png' %}" 
+                     class="card-img-top product-link" 
+                     alt="Palkova"
+                     data-name="Palkova"
+                     data-price="950"
+                     data-description="Soft and sweet Palkova, rich in taste."
+                     data-image="{% static 'main/images/palgova.png' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Palkova" data-price="950"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Palkova</h2>
+                    <h5 class="card-text">From: ₹950 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+        {% comment %} Badusha {% endcomment %}
+        <div class="col-md-4">
+            <div class="card cake-card position-relative">
+                <img src="{% static 'main/images/bathu.jpg' %}" 
+                     class="card-img-top product-link" 
+                     alt="Badusha"
+                     data-name="Badusha"
+                     data-price="600"
+                     data-description="Soft Badusha, traditional and sweet."
+                     data-image="{% static 'main/images/bathu.jpg' %}">
+                <i class="bi bi-heart wishlist-icon" data-name="Badusha" data-price="600"></i>
+                <div class="card-body text-center">
+                    <h2 class="card-title">Badusha</h2>
+                    <h5 class="card-text">From: ₹600 PER KG</h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<section class="m-5 text-center">
+    <img src="{% static 'main/images/design.png' %}" alt="" style="background-color: white; color: black;">
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ----- Wishlist Functionality -----
+document.querySelectorAll('.wishlist-icon').forEach(icon => {
+    icon.addEventListener('click', function(event) {
+        event.stopPropagation();
+        this.classList.toggle('active');
+
+        const name = this.dataset.name;
+        const price = this.dataset.price;
+        const image = this.parentElement.querySelector('img').src;
+
+        if (this.classList.contains('active')) {
+            this.classList.replace('bi-heart', 'bi-heart-fill');
+            addToWishlist(name, price, image);
+        } else {
+            this.classList.replace('bi-heart-fill', 'bi-heart');
+            removeFromWishlist(name);
+        }
+    });
+});
+
+function addToWishlist(name, price, image) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    if (!wishlist.find(item => item.name === name)) {
+        wishlist.push({ name, price, image });
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    }
+}
+
+function removeFromWishlist(name) {
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlist = wishlist.filter(item => item.name !== name);
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+}
+
+// ----- Product Detail Navigation -----
+document.querySelectorAll('.product-link').forEach(img => {
+    img.addEventListener('click', function() {
+        const name = encodeURIComponent(this.dataset.name);
+        const price = encodeURIComponent(this.dataset.price);
+        const image = encodeURIComponent(this.dataset.image);
+        const description = encodeURIComponent(this.dataset.description);
+
+        window.location.href = `/product_detail?name=${name}&price=${price}&image=${image}&description=${description}`;
+    });
+});
+</script>
+
+</body>
+{% endblock %}
