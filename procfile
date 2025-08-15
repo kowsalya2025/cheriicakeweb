@@ -1,0 +1,1 @@
+gunicorn cheriicake.wsgi:application
